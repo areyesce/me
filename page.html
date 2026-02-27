@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D8C;
+            --accent-blue: #1E88E5;
+            --light-blue: #E3F2FD;
+            --dark-navy: #0D1B2A;
+            --text-primary: #1B2838;
+            --text-secondary: #546E7A;
+            --border-light: #E0E7ED;
+            --white: #FFFFFF;
+            --gradient-start: #0A4D8C;
+            --gradient-end: #1E88E5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #F8FBFF 0%, #EDF5FF 100%);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Section */
+        .header {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--border-light);
+            position: relative;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            animation: expandWidth 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 200px;
+            }
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--border-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--accent-blue);
+            box-shadow: 0 8px 24px rgba(10, 77, 140, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(10, 77, 140, 0.18);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 20px;
+            color: var(--accent-blue);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        /* Bio Section */
+        .bio-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 900px;
+        }
+
+        /* Split Section - Certifications & GitHub */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* AWS Certifications Box */
+        .certifications-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(10, 77, 140, 0.06);
+            border: 2px solid var(--border-light);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .cert-item {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(10, 77, 140, 0.08);
+        }
+
+        .cert-item:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(10, 77, 140, 0.2);
+        }
+
+        .cert-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Experience Items */
+        .experience-item, .project-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(10, 77, 140, 0.06);
+            border-left: 4px solid var(--accent-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(30, 136, 229, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .experience-item:hover::before, .project-item:hover::before {
+            left: 100%;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(10, 77, 140, 0.12);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .experience-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 4px;
+        }
+
+        .company {
+            font-size: 18px;
+            color: var(--accent-blue);
+            font-weight: 400;
+        }
+
+        .date {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .description ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .description li {
+            margin-bottom: 8px;
+        }
+
+        /* GitHub Activity Box */
+        .github-activity {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%);
+            border-radius: 16px;
+            padding: 32px;
+            color: var(--white);
+            box-shadow: 0 12px 40px rgba(10, 77, 140, 0.25);
+            position: relative;
+            overflow: hidden;
+            animation: slideInRight 0.8s ease-out 0.4s backwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .github-activity::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        .github-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .github-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .github-title {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .activity-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInStagger 0.5s ease-out backwards;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-item:nth-child(1) { animation-delay: 0.6s; }
+        .activity-item:nth-child(2) { animation-delay: 0.7s; }
+        .activity-item:nth-child(3) { animation-delay: 0.8s; }
+        .activity-item:nth-child(4) { animation-delay: 0.9s; }
+        .activity-item:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes fadeInStagger {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .activity-type {
+            font-size: 12px;
+            color: var(--light-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            font-weight: 300;
+        }
+
+        .activity-repo {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .activity-date {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .loading {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .top-section {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .profile-image {
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .github-activity {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="profile-image">
+                👤
+            </div>
+            <div class="header-content">
+                <h1>Your Name</h1>
+                <div class="title">Senior Software Engineer</div>
+            </div>
+        </header>
+
+        <!-- Bio Section -->
+        <section class="section">
+            <h2 class="section-title">Bio</h2>
+            <div class="bio-content">
+                <p>
+                    Passionate software engineer with 8+ years of experience building scalable web applications and cloud infrastructure. 
+                    Specialized in full-stack development with a focus on modern JavaScript frameworks, AWS services, and DevOps practices. 
+                    Strong advocate for clean code, automated testing, and continuous improvement.
+                </p>
+            </div>
+        </section>
+
+        <!-- Certifications and GitHub Activity Section -->
+        <section class="section">
+            <div class="split-section">
+                <!-- AWS Certifications Box (1/4 left) -->
+                <div class="certifications-box">
+                    <div class="cert-grid">
+                        <a href="https://www.credly.com/badges/your-badge-id-1" target="_blank" rel="noopener noreferrer" class="cert-item">
+                            <img src="https://via.placeholder.com/150x150/0A4D8C/ffffff?text=AWS+SAA" alt="AWS Solutions Architect Associate">
+                        </a>
+                        <a href="https://www.credly.com/badges/your-badge-id-2" target="_blank" rel="noopener noreferrer" class="cert-item">
+                            <img src="https://via.placeholder.com/150x150/1E88E5/ffffff?text=AWS+Dev" alt="AWS Developer Associate">
+                        </a>
+                        <a href="https://www.credly.com/badges/your-badge-id-3" target="_blank" rel="noopener noreferrer" class="cert-item">
+                            <img src="https://via.placeholder.com/150x150/0A4D8C/ffffff?text=AWS+SysOps" alt="AWS SysOps Administrator">
+                        </a>
+                        <a href="https://www.credly.com/badges/your-badge-id-4" target="_blank" rel="noopener noreferrer" class="cert-item">
+                            <img src="https://via.placeholder.com/150x150/1E88E5/ffffff?text=AWS+SAP" alt="AWS Solutions Architect Professional">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GitHub Activity Box (3/4 right) -->
+                <div class="github-activity">
+                    <div class="github-header">
+                        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <h3 class="github-title">Latest Activity</h3>
+                    </div>
+                    <ul class="activity-list" id="activityList">
+                        <li class="loading">Loading GitHub activity...</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Senior Software Engineer</div>
+                        <div class="company">Tech Company Inc.</div>
+                    </div>
+                    <div class="date">2021 - Present</div>
+                </div>
+                <div class="description">
+                    <ul>
+                        <li>Led development of microservices architecture serving 2M+ daily active users</li>
+                        <li>Architected and deployed cloud infrastructure on AWS using Terraform and CloudFormation</li>
+                        <li>Mentored team of 5 junior developers on best practices and code review processes</li>
+                        <li>Reduced deployment time by 60% through CI/CD pipeline optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Software Engineer</div>
+                        <div class="company">Startup Solutions LLC</div>
+                    </div>
+                    <div class="date">2018 - 2021</div>
+                </div>
+                <div class="description">
+                    <ul>
+                        <li>Built responsive web applications using React, Node.js, and PostgreSQL</li>
+                        <li>Implemented automated testing suite achieving 85% code coverage</li>
+                        <li>Collaborated with product team to define technical requirements and roadmap</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Junior Developer</div>
+                        <div class="company">Digital Agency Co.</div>
+                    </div>
+                    <div class="date">2016 - 2018</div>
+                </div>
+                <div class="description">
+                    <ul>
+                        <li>Developed and maintained client websites using WordPress and custom PHP applications</li>
+                        <li>Participated in agile development process and sprint planning</li>
+                        <li>Provided technical support and bug fixes for production applications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Open Source CLI Tool</div>
+                    </div>
+                    <div class="date">2024</div>
+                </div>
+                <div class="description">
+                    Built a command-line tool for developers to automate AWS resource management. 
+                    Written in Go, features include infrastructure provisioning, cost optimization analysis, 
+                    and automated backups. Over 500 stars on GitHub.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Real-time Analytics Dashboard</div>
+                    </div>
+                    <div class="date">2023</div>
+                </div>
+                <div class="description">
+                    Developed a real-time analytics platform using React, WebSockets, and time-series database. 
+                    Processes millions of events per day with sub-second latency. Integrated with Grafana for 
+                    advanced visualization and alerting.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">E-commerce Platform Migration</div>
+                    </div>
+                    <div class="date">2022</div>
+                </div>
+                <div class="description">
+                    Led migration of legacy monolithic application to modern microservices architecture. 
+                    Achieved zero-downtime migration for 100K+ active users. Improved page load times by 40% 
+                    and reduced infrastructure costs by 30%.
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // GitHub Activity Fetcher
+        const username = 'areyesce';
+        const activityList = document.getElementById('activityList');
+
+        async function fetchGitHubActivity() {
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/events/public?per_page=5`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch GitHub activity');
+                }
+
+                const events = await response.json();
+                
+                if (events.length === 0) {
+                    activityList.innerHTML = '<li class="loading">No recent activity found</li>';
+                    return;
+                }
+
+                activityList.innerHTML = events.map(event => {
+                    const date = new Date(event.created_at);
+                    const formattedDate = date.toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric'
+                    });
+
+                    let activityType = '';
+                    let displayText = event.repo.name;
+
+                    switch(event.type) {
+                        case 'PushEvent':
+                            activityType = 'Pushed to';
+                            const commits = event.payload.commits?.length || 0;
+                            displayText = `${event.repo.name} (${commits} commit${commits !== 1 ? 's' : ''})`;
+                            break;
+                        case 'CreateEvent':
+                            activityType = 'Created';
+                            displayText = `${event.repo.name} (${event.payload.ref_type})`;
+                            break;
+                        case 'PullRequestEvent':
+                            activityType = event.payload.action === 'opened' ? 'Opened PR' : 'PR Activity';
+                            break;
+                        case 'IssuesEvent':
+                            activityType = event.payload.action === 'opened' ? 'Opened Issue' : 'Issue Activity';
+                            break;
+                        case 'WatchEvent':
+                            activityType = 'Starred';
+                            break;
+                        case 'ForkEvent':
+                            activityType = 'Forked';
+                            break;
+                        default:
+                            activityType = event.type.replace('Event', '');
+                    }
+
+                    return `
+                        <li class="activity-item">
+                            <div class="activity-type">${activityType}</div>
+                            <div class="activity-repo">${displayText}</div>
+                            <div class="activity-date">${formattedDate}</div>
+                        </li>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error('Error fetching GitHub activity:', error);
+                activityList.innerHTML = '<li class="loading">Unable to load activity</li>';
+            }
+        }
+
+        // Fetch activity on page load
+        fetchGitHubActivity();
+    </script>
+</body>
+</html>
