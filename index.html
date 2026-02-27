@@ -209,6 +209,19 @@
             gap: 16px;
         }
 
+        .cert-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        /* Make github-only split-section use single column so github box spans full width */
+        .split-section.github-only {
+            grid-template-columns: 1fr;
+        }
+
         .cert-item {
             display: block;
             border-radius: 8px;
@@ -226,6 +239,8 @@
             width: 100%;
             height: auto;
             display: block;
+            max-width: 120px;
+            max-height: 120px;
         }
 
         /* Experience Items */
@@ -494,28 +509,31 @@
             </div>
         </section>
 
-        <!-- Certifications and GitHub Activity Section -->
+        <!-- Certifications Section -->
         <section class="section">
-            <div class="split-section">
-                <!-- AWS Certifications Box (1/4 left) -->
-                <div class="certifications-box">
-                    <div class="cert-grid">
-                        <a href="https://www.credly.com/earner/earned/badge/50b4ec70-c4e6-4894-863f-3ee10fc7a040" target="_blank" rel="noopener noreferrer" class="cert-item">
-                            <img src="aws_cp.png" alt="AWS Cloud Practitioner">
-                        </a>
-                        <a href="https://www.credly.com/badges/7cbdc1a1u-aa82-46f0-b711-544717557696" target="_blank" rel="noopener noreferrer" class="cert-item">
-                            <img src="aws_da.png" alt="AWS Certified Developer – Associate">
-                        </a>
-                        <a href="https://www.credly.com/badges/your-badge-id-3" target="_blank" rel="noopener noreferrer" class="cert-item">
-                            <img src="finops.png" alt="FinOps Trained Engineer">
-                        </a>
-                        <a href="https://www.credly.com/badges/your-badge-id-4" target="_blank" rel="noopener noreferrer" class="cert-item">
-                            <img src="aws_sa.png" alt="AWS Solutions Architect Professional">
-                        </a>
-                    </div>
+            <h2 class="section-title">Certifications</h2>
+            <div class="bio-content">
+                <div class="cert-row">
+                <a href="https://www.credly.com/earner/earned/badge/50b4ec70-c4e6-4894-863f-3ee10fc7a040" target="_blank" rel="noopener noreferrer" class="cert-item">
+                    <img src="aws_cp.png" alt="AWS Cloud Practitioner">
+                </a>
+                <a href="https://www.credly.com/badges/7cbdc1a1u-aa82-46f0-b711-544717557696" target="_blank" rel="noopener noreferrer" class="cert-item">
+                    <img src="aws_da.png" alt="AWS Certified Developer – Associate">
+                </a>
+                <a href="https://www.credly.com/badges/your-badge-id-3" target="_blank" rel="noopener noreferrer" class="cert-item">
+                    <img src="finops.png" alt="FinOps Trained Engineer">
+                </a>
+                <a href="https://www.credly.com/badges/your-badge-id-4" target="_blank" rel="noopener noreferrer" class="cert-item">
+                    <img src="aws_sa.png" alt="AWS Solutions Architect Professional">
+                </a>
                 </div>
+            </div>
+        </section>
 
-                <!-- GitHub Activity Box (3/4 right) -->
+        <!-- Certifications and GitHub Activity Section (GitHub only) -->
+        <section class="section">
+            <div class="split-section github-only">
+                <!-- GitHub Activity Box (full width right) -->
                 <div class="github-activity">
                     <div class="github-header">
                         <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -561,7 +579,7 @@
                     <ul>
                         <li>Developed back-end application services to facilitate automation of program deployments with Jenkins.</li>
                         <li>Created command line scripts to update metadata on 182 resources to fulfill CloudWatch requirements using Lambda functions.</li>
-                        <li>Collaborated via pair programming to create a form using ReactJS and Javascript, adding value to the company by saving customer solutions team time and resources to update the database for 300+ UBreakIFix stores.</li>
+                        <li>Created a form using ReactJS and Javascript, adding value to the company by saving customer solutions team time and resources to update the database for 300+ UBreakIFix stores.</li>
                         <li>Asurion was recognized in the <a href="https://www.nationalinternday.com/2021-top-100-internship-programs" target="_blank" rel="noopener noreferrer">Top 100 Internship Programs of 2021</a>.</li>
                     </ul>
                 </div>
@@ -577,7 +595,7 @@
                 </div>
                 <div class="description">
                     <ul>
-                        <li>Collaborated to develop time series prediction models for daily ATM volume estimation with visualizations.</li>
+                        <li>Developed time series prediction models for daily ATM volume estimation with visualizations.</li>
                         <li>Utilized Pandas to rearrange large data sets to train machine learning algorithms in Python.</li>
                         <li>Achieved performance of 8% mean absolute percent error on forecast models that incorporated external variables.</li>
                     </ul>
